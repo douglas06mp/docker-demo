@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t douglas06mp/frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true douglas06mp/frontend npm run test
